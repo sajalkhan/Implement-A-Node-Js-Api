@@ -5,7 +5,7 @@ const app = require('./app');
 dotenv.config({path: './config.env'}); // here will pass an object to env so it will understand where the configuration file is located
 
 const DB = process.env.DATABASE.replace('<PASSWORD>',process.env.DATABASE_PASSWORD);
-
+try{
 mongoose.connect(DB,{
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -13,7 +13,10 @@ mongoose.connect(DB,{
     useFindAndModify:false
 })
 .then(()=> console.log('Db Connection Successful!') );
-
+}catch(err)
+{
+    
+}
 const port = process.env.PORT || 8080;
 
 app.listen(port, ()=>{
