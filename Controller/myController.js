@@ -12,7 +12,7 @@ exports.checkString = (req,res,next)=>{
         var val = strA.indexOf(strB[i]);
         strA = strA.replace(strB[i],'_'); // remove a specific character
 
-        if(max<val) max = val;
+        if(max<val && !val) max = val;
         else
         {
             return res.status(200).json({
